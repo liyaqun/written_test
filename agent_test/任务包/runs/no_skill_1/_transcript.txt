@@ -1,0 +1,22 @@
+We're changing auto mode to no longer charge for classifier requests in Claude Code. However, this session isn't eligible because your requests go through api.deepseek.com, which isn't compatible with this update. Nothing breaks: auto mode keeps working, and its classifier requests are billed as before. To fix it and access the new version of auto mode, ask your gateway to implement: https://code.claude.com/docs/en/auto-mode-classifier-billing
+老李，判定表填好了，说明也写好了。工作区里的规范和数据我没动。
+
+**判定结果一览：**
+
+| 设备 | 判定 | 条款 | 关键数值 |
+|---|---|---|---|
+| SV-001 | **需检修** | 4.1 | 额定上限为空 → 用机柜级 62℃；运行 64℃ > 62℃ |
+| SV-002 | **需检修** | 4.2 | 温度 66℃ 没超（≤68℃），但告警 4 次 ≥3 次 |
+| SV-003 | **不适用** | 4.3 | 状态「厂商保修返修中」，排除本次判定 |
+| SV-004 | **需检修** | 4.1 | 运行 78℃ > 额定上限 75℃ |
+
+两处要留意：
+
+1. **SV-001 的坑**——它的「额定温度上限」列是空的，规范 4.1 明确说这种按机柜级限值走。A-01 是通用计算机柜，限值 62℃，不是 68℃ 也不是 GPU 的 80℃。按 64>62 判需检修。
+2. **SV-003 别误判**——它温度 71℃ 其实超了额定 68℃，看着像 4.1 需检修；但状态是厂商返修中，4.3 优先级更高，得判「不适用」。报修时这台的温度不用报。
+
+产出文件：
+- `检修判定表.csv`（在原空表里直接填的，未新建）
+- `判定说明.md`（逐台说明理由，含条款速查和一处分项提醒）
+
+报修前建议跟厂商确认下 SV-003 的返修进度，别和本次报修单撞车。

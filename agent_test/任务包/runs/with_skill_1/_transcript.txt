@@ -1,0 +1,15 @@
+We're changing auto mode to no longer charge for classifier requests in Claude Code. However, this session isn't eligible because your requests go through api.deepseek.com, which isn't compatible with this update. Nothing breaks: auto mode keeps working, and its classifier requests are billed as before. To fix it and access the new version of auto mode, ask your gateway to implement: https://code.claude.com/docs/en/auto-mode-classifier-billing
+填完了，规范和数据没动。
+
+**判定结果（已填入现成的 `检修判定表.csv`，含触发条款和数值）：**
+
+| 设备 | 判定 | 条款 | 关键点 |
+|---|---|---|---|
+| SV-001 | 需检修 | 4.1 | 额定列为空→按机柜限值 62℃；运行 64℃ 超限 |
+| SV-002 | 需检修 | 4.2 | 温度 66℃ 未超 68℃；但告警 4 次 ≥3 |
+| SV-003 | 不适用 | 4.3 | 返修中，排除规则优先 |
+| SV-004 | 需检修 | 4.1 | 额定 75℃ 有值→不套机柜 80℃；运行 78℃ 超限 |
+
+四个容易踩的点都处理了：**空额定值走机柜回退**（SV-001）、**有值时不用回退**（SV-004）、**排除条款优先于温度**（SV-003）、**告警数独立触发**（SV-002）。
+
+`判定说明.md` 已按一机一段写好，末尾附汇总表。
